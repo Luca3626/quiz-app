@@ -1,0 +1,32 @@
+   #start {
+        margin: auto;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        line-height: 3rem;
+      }
+      textarea{
+         margin:5px;
+      
+      }
+      i {
+		  
+		 font-size:24px;
+		 color:darkgreen
+	  }
+	  .question{
+		margin-top:2px;		  
+	  }
+.answercomment {
+    background-color: rgba(0, 0, 0, 0.2);
+    color:green;
+    white-space: nowrap;
+    padding: 5px;
+    top: 4px;
+}
+.container_quiz {
+  border: 1px solid blue;
+  padding: 20px;
+  border-radius: 25px;
+}
+	

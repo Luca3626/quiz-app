@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="main-templates">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+<div layout:fragment="body" >
+ <div class="row">
+   <div class="col-lg-4"  id="start">
+      <h2 class="centrato">Quiz Result</h2>
+      <h4>Score: <span th:text="${numRisposte}"></span> of <span th:text="${numDomande}"></span></h4>
+        <div class="question" th:each="d,iStat:${domande}">
+       <p>Question <span th:text="${iStat.index+1}"> </span><br>
+         <span id="index_prova" th:text="${d.testo}"> </span></p> 
+       <form th:action="@{/api/quiz}" method="get" id="form">
+          <div th:each="r:${d.risposte}" class="row g-3 align-items-center" style="background-color:#E7E9EB">
+      <div  class="col-auto">
+		  <div th:if="${r.dettagli==1}">
+			<i  class="fa fa-check" style="color:darkgreen"></i>   
+			<label class="col-form-label" id="risposta1" th:text="${r.testo}"></label> 
+			<span class="answercomment">&nbsp;&nbsp;Risposta Corretta&nbsp;&nbsp;</span>
+			 
+		   
+		  </div>
+       
+       <div th:if="${r.dettagli==2}">
+			  <i  class="fa fa-times" style="color:darkred"></i> 
+			  <label class="col-form-label" id="risposta1" th:text="${r.testo}"></label>  
+			  <span class="answercomment">&nbsp;&nbsp;Tua Risposta&nbsp;&nbsp;</span>
+		  </div>
+		  <div th:if="${r.dettagli==0}">
+			  <label class="col-form-label" id="risposta1" th:text="${r.testo}"></label> 
+		  </div>
+       </div>
+         
+    </div>
+        
+</form>
+</div>
+  
+     
+  </div>
+ </div>
+ </div>
+</body>
+</html>
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="main-templates">
+<head>
+<meta charset="UTF-8">
+<title>Inserimento Domande</title>
+</head>
+<body>
+<div layout:fragment="body" >
+ <div class="row">
+   <div class="col-lg-4" id="start">
+      <h2 class="centrato">Domande con risposte</h2>
+      <form th:object="${domanda}" method="post" th:action="@{/api}">
+       <div class="mb-3">
+        <label class="form-label">Testo Domanda</label>
+      <!--   <input type="text" class="form-control" id="testo_domanda">-->
+      <textarea class="form-control" rows="3" cols="30"  id="testo" name="testo"></textarea>
+        </div>
+      <div class="row g-3 align-items-center">
+       <div class="col-auto">
+        <label class="col-form-label">Risposta 1</label>
+       </div>
+  <div class="col-auto">
+  <textarea class="form-control" rows="3" cols="30" name="risposta"></textarea>
+   
+  </div>
+  <div class="col-auto">
+   <div class="form-check">
+  <input class="form-check-input" type="radio" name="check" value="0" checked>
+
+</div>
+  </div>
+</div>
+
+    <div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label class="col-form-label">Risposta 2</label>
+  </div>
+  <div class="col-auto">
+   <textarea class="form-control" rows="3" cols="30" name="risposta"></textarea>
+  </div>
+  <div class="col-auto">
+    <div class="form-check">
+     <input class="form-check-input" type="radio" value="1" name="check">
+   </div>
+  </div>
+</div>
+
+   <div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label class="col-form-label">Risposta 3</label>
+  </div>
+  <div class="col-auto">
+     <textarea class="form-control" rows="3" cols="30" name="risposta"></textarea>
+  </div>
+  <div class="col-auto">
+    <div class="form-check">
+     <input class="form-check-input" type="radio" name="check" value="2">
+   </div>
+  </div>
+</div>
+
+   <div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label class="col-form-label">Risposta 4</label>
+  </div>
+  <div class="col-auto">
+   <textarea class="form-control" rows="3" cols="30" name="risposta"></textarea>
+  </div>
+  <div class="col-auto">
+    <div class="form-check">
+     <input class="form-check-input" type="radio" value="3" name="check">
+   </div>
+  </div>
+  
+    <div class="mb-3">
+        <label class="form-label">Seleziona Categoria</label>
+      <!--   <input type="text" class="form-control" id="testo_domanda">-->
+      <select name="tipoquiz" class="form-select">
+		  <option th:each="cat:${categorie}" th:value="${cat.idquiz}" th:text="${cat.categoria}" ></option>
+	  </select>
+        </div>
+</div>
+
+         <button type="submit" id="btn" class="btn btn-primary">Salva Domanda</button>   
+</form>
+
+   
+    
+
+
+      
+  </div>
+  
+  
+ </div>
+ 
+ </div>
+</body>
+</html>
+

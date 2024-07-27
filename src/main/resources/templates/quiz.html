@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="main-templates">
+<head>
+<meta charset="UTF-8">
+ <title>Quiz</title>
+</head>
+<body>
+<div layout:fragment="body" >
+ <div class="row">
+   <div class="col-lg-4" id="start">
+	     
+       <h2 class="centrato" >Quiz </h2>
+       <form method="get" th:action="@{/api/quiz}" >
+		   <select class="form-select" name="category">
+            <option selected>Seleziona la categoria</option>
+            <option th:each="c:${categories}" th:value="${c.idquiz}" th:text="${c.categoria}"></option>
+          </select>
+		   <button type="submit" name="seleziona" class="btn btn-primary">Seleziona</button>
+		   
+	   </form>
+	   </div>
+	   </div>
+	 <div class="row">
+   <div class="col-lg-7" id="start">  
+	 <div th:if="${countDomanda!=0}" class="container_quiz">
+      
+       <p>Question <span id="num_question" th:text="${indiceDomanda}"> </span> of <span id="all" th:text="${countDomanda}"></span></p> 
+      <p id="titolo" th:text="${testoDomanda}"></p>
+      <form th:action="@{/api/quiz}" method="get" id="form">
+          <div  th:each="r:${risposte}" class="row g-3 align-items-center" style="background-color:#E7E9EB">
+           <div class="col-auto">
+             <div class="form-check">
+              <input class="form-check-input" type="radio" name="check" th:value="${r.idRisposta}">
+            </div>
+          </div>
+       <div class="col-auto">
+        <label class="col-form-label" id="risposta1" th:text="${r.testo}"></label>
+       </div>
+    </div>
+         <input type="hidden" name="category" th:value="${idquiz}" > 
+ <button th:if="${fine}" type="submit" id="btnNext" name="btn" value="next" class="btn btn-primary">Next</button>
+ <button th:if="${!fine}" type="submit" id="btnDettagli" name="btn" value="dettagli" class="btn btn-primary">Controlla Risposte</button>
+<button type="submit" class="btn btn-primary" name="btn" value="reload" >Reload</button>
+</form>
+      <div id="risposte_esatte" th:text="${risposte_esatte}"></div>
+
+<span id="timer"></span>
+      </div>
+ </div>
+ </div>
+  </div>
+
+</body>
+</html>
+
